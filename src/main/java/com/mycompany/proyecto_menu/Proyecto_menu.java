@@ -30,20 +30,10 @@ public class Proyecto_menu {
         }
     }
     
-    /*static void contarLongitudes(String[] nombres) {
-    System.out.println("\nLongitud de cada palabra registrada:");
-    for (int i = 0; i < nombres.length; i++) {
-        if (nombres[i] != null && !nombres[i].isEmpty()) {
-            System.out.println("\nCadena no." + (i + 1) + " ('" + nombres[i] + "') tiene una longitud de : " + nombres[i].length() + "letras");
-        } else {
-            System.out.println("Cadena no." + (i + 1) + " está vacía o no fue ingresada.");
-        }
-    }
-}  */
-static void contarLongitudes(String[] nombres) {
+static void contarLongitudes(String[] palabraS) {
     System.out.println("\nLongitud de cada palabra registrada:");
     int i = 1; // Usamos un contador externo para mostrar el número del alumno
-    for (String palabra : nombres) {  // 'for-each' recorre el arreglo directamente
+    for (String palabra : palabraS) {  // 'for-each' recorre el arreglo directamente
         if (palabra != null && !palabra.isEmpty()) {
             System.out.println("\nCadena no." + i + " ('" + palabra + "') tiene una longitud de: " + palabra.length() + " Letras." );
         } 
