@@ -1,12 +1,11 @@
 package com.mycompany.proyecto_menu;
 //Areglo unidimensional o vector para N datos tipo string
-//
 
 import java.util.Scanner;
 
 public class Proyecto_menu {
 
-    static void leerInfo(Scanner te, String n[]) {
+         static void leerInfo(Scanner te, String n[]) {
         for (int i = 0; i < n.length; i++) {
             System.out.println("\nCadena de datos no." + (i + 1));
             System.out.println("Ingrese la cadena de texto:");
@@ -14,7 +13,7 @@ public class Proyecto_menu {
         }
     }
 
-    static char menu(Scanner te) {
+         static char menu(Scanner te) {
         char op;
 
         System.out.println("\na.- Registro de información\nb.- Mostrar información\nc.- Contador de letras por cada oracion\nx.- Salir");
@@ -23,14 +22,17 @@ public class Proyecto_menu {
         return op;
     }
 
-    static void mostrarInfo(String n[]) { //Modificar esto por un "For each"
-        for (int i = 0; i < n.length; i++) {
-            System.out.println("\nPalabra u Oracion no." + (i + 1));
-            System.out.printf("Palabra: \t%s", n[i] + "\n");
-        }
+         static void mostrarInfo(String[] palabraS) {
+             int i = 1; 
+                for (String palabra : palabraS) { 
+                       System.out.println("\nPalabra u Oracion no." + i);
+                       System.out.printf("Palabra:\t %s\n", palabra);
+                       i++; 
     }
+}
+
     
-static void contarLongitudes(String[] palabraS) {
+         static void contarLongitudes(String[] palabraS) {
     System.out.println("\nLongitud de cada palabra registrada:");
     int i = 1; // Usamos un contador externo para mostrar el número del alumno
     for (String palabra : palabraS) {  // 'for-each' recorre el arreglo directamente
