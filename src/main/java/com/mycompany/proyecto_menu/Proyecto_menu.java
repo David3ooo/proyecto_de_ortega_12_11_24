@@ -6,21 +6,22 @@ import java.util.Scanner;
 public class Proyecto_menu {
 
          static void leerInfo(Scanner te, String n[]) {
-        for (int i = 0; i < n.length; i++) {
-            System.out.println("\nCadena de datos no." + (i + 1));
-            System.out.println("Ingrese la cadena de texto:");
-            n[i] = te.nextLine();
-        }
-    }
+                for (int i = 0; i < n.length; i++) {
+                    System.out.println("\nCadena de datos no." + (i + 1));
+                    System.out.println("Ingrese la cadena de texto:");
+                    n[i] = te.nextLine();
+                }
+            }
 
          static char menu(Scanner te) {
-        char op;
+                char op;
 
-        System.out.println("\na.- Registro de información\nb.- Mostrar información\nc.- Contador de letras por cada oracion\nx.- Salir");
-        op = te.nextLine().charAt(0);
+                System.out.println("\na.- Registro de información\nb.- Mostrar información\nc.- Contador de letras por cada oracion");
+                System.out.println("\nd.- Buscar dato en el arreglo\nx.- Salir");
+                op = te.nextLine().charAt(0);
 
-        return op;
-    }
+                return op;
+            }
 
          static void mostrarInfo(String[] palabraS) {
              int i = 1; 
@@ -31,20 +32,35 @@ public class Proyecto_menu {
     }
 }
 
-    
          static void contarLongitudes(String[] palabraS) {
-    System.out.println("\nLongitud de cada palabra registrada:");
-    int i = 1; // Usamos un contador externo para mostrar el número del alumno
-    for (String palabra : palabraS) {  // 'for-each' recorre el arreglo directamente
-        if (palabra != null && !palabra.isEmpty()) {
-            System.out.println("\nCadena no." + i + " ('" + palabra + "') tiene una longitud de: " + palabra.length() + " Letras." );
-        } 
-        
-        i++; // Aumentamos el contador
-    }
-}
+                System.out.println("\nLongitud de cada palabra registrada:");
+                int i = 1; // Usamos un contador externo para mostrar el número del alumno
+                for (String palabra : palabraS) {
+                    if (palabra != null && !palabra.isEmpty()) {
+                        System.out.println("\nCadena no." + i + " ('" + palabra + "') tiene una longitud de: " + palabra.length() + " Letras." );
+                    }  
+                    i++; 
+                }
+            }
 
-    
+        static void buscarPalabraParcial(Scanner te, String[] palabras) {
+                System.out.println("\nIngrese la letra o palabra que desea buscar:");
+                String fragmento = te.nextLine();
+
+                boolean encontrada = false;
+
+                for (String palabra : palabras) {
+                    if (palabra != null && palabra.toLowerCase().contains(fragmento.toLowerCase())) {
+                        System.out.println("Palabra o letra encontrada:\t '" + palabra + "'");
+                        encontrada = true;
+                    }
+                }
+
+                if (!encontrada) {
+                    System.out.println("No se la letra o palabra:\t '" + fragmento + "'\t en el arreglo.");
+                }
+            }
+
     public static void main(String[] args) {
 
         @SuppressWarnings("resource")
@@ -66,62 +82,46 @@ public class Proyecto_menu {
         do {
             opc = menu(teclado);
 
-            switch (opc) {
-                case 'a':
+          switch (opc) {
+                case 'a':                   //Registrar informacion 
                     if (ind) {
                         System.out.println("\n Ya registro información...");
                         break;
                     }
                     leerInfo(teclado, palabra);
-
                     ind = true;
-
                     break;
-                case 'b':
+                    
+                case 'b':                               //Mostramos las palabras o los datos registrados
                     if (!ind) {
                         System.out.println("\n No ha registrado información...");
                         break;
                     }
-
                     mostrarInfo(palabra);
-                        
-
                     break;
 
-                case 'c':
+                case 'c':                                   //Este caso nos dice de cuantas letras se componen las palabras que dimos a 
+                     if (!ind) {
+                        System.out.println("\n No ha registrado información...");
+                        break;
+                    }               //guardar en la variable 'palabras'
+                    contarLongitudes(palabra);
+                    break;
+
+                    case 'd':                                        // Buscar un dato con una letra o palabra
                      if (!ind) {
                         System.out.println("\n No ha registrado información...");
                         break;
                     }
-
-                    contarLongitudes(palabra);
+                     buscarPalabraParcial(teclado, palabra);
+                    break;  
                     
-                    break;
-
-                    /*case 'd':      // cali mas baja
-                    /* if (!ind) {
+                case 'e':
+                    if (!ind) {
                         System.out.println("\n No ha registrado información...");
                         break;
                     }
-
-                    System.out.println("\n La calif menor es: " + califbaja(calif));
-                     
-                    break;  */
-                    
-                case 'e':
-
-                    // SE RECOMIENDA A LOS ALUMNOS COMO EJERCICIOS
-                    // SOBRE ESTE MISMO EJEMPLO, GENERAR E IMPLEMENTAR
-                    // MAS CASOS PARA APLICAR OTROS PROCESOS A LA 
-                    // INFORMACIÓN DE LOS ALUMNOS COMO: UTILIZANDO FUNCIONES
-                    // DEL PROGRAMADOR
-                    // * Agregar un punto a la calificación de las mujeres
-                    // * Cambiarle el sexo a los reprobados
-                    // * Obtener y exhibir el promedio del grupo
-                    // * Modificar un palabra, una calificación, etc.
-                    // * Realizar búsquedas, obtener la calificación mas baja, etc.
-                    // * Total de aprobados, total de reprobados, etc.
-                    // * etc., etc., etc.
+                    //
                     break;
 
                 default:
