@@ -17,7 +17,7 @@ public class Proyecto_menu {
     static char menu(Scanner te) {
         char op;
 
-        System.out.println("\na.- Registro de información\nb.- Mostrar información\nx.- Salir");
+        System.out.println("\na.- Registro de información\nb.- Mostrar información\nc.- Contador de letras por cada oracion\nx.- Salir");
         op = te.nextLine().charAt(0);
 
         return op;
@@ -25,11 +25,34 @@ public class Proyecto_menu {
 
     static void mostrarInfo(String n[]) { //Modificar esto por un "For each"
         for (int i = 0; i < n.length; i++) {
-            System.out.println("\nDatos del alumno no." + (i + 1));
-            System.out.printf("Nombre:%s", n[i]);
+            System.out.println("\nPalabra u Oracion no." + (i + 1));
+            System.out.printf("Palabra: \t%s", n[i] + "\n");
         }
     }
+    
+    /*static void contarLongitudes(String[] nombres) {
+    System.out.println("\nLongitud de cada palabra registrada:");
+    for (int i = 0; i < nombres.length; i++) {
+        if (nombres[i] != null && !nombres[i].isEmpty()) {
+            System.out.println("\nCadena no." + (i + 1) + " ('" + nombres[i] + "') tiene una longitud de : " + nombres[i].length() + "letras");
+        } else {
+            System.out.println("Cadena no." + (i + 1) + " está vacía o no fue ingresada.");
+        }
+    }
+}  */
+static void contarLongitudes(String[] nombres) {
+    System.out.println("\nLongitud de cada palabra registrada:");
+    int i = 1; // Usamos un contador externo para mostrar el número del alumno
+    for (String palabra : nombres) {  // 'for-each' recorre el arreglo directamente
+        if (palabra != null && !palabra.isEmpty()) {
+            System.out.println("\nCadena no." + i + " ('" + palabra + "') tiene una longitud de: " + palabra.length() + " Letras." );
+        } 
+        
+        i++; // Aumentamos el contador
+    }
+}
 
+    
     public static void main(String[] args) {
 
         @SuppressWarnings("resource")
@@ -42,9 +65,9 @@ public class Proyecto_menu {
         System.out.println("Registre la cantidad de 'palabras' u 'oraciones' que desee procesar: ");
         int n = teclado.nextInt();
 
-        String nombre[];
+        String[] palabra;
 
-        nombre = new String[n];
+        palabra = new String[n];
 
         teclado.nextLine();
 
@@ -57,7 +80,7 @@ public class Proyecto_menu {
                         System.out.println("\n Ya registro información...");
                         break;
                     }
-                    leerInfo(teclado, nombre);
+                    leerInfo(teclado, palabra);
 
                     ind = true;
 
@@ -68,36 +91,31 @@ public class Proyecto_menu {
                         break;
                     }
 
-                    mostrarInfo(nombre);
+                    mostrarInfo(palabra);
+                        
+
                     break;
 
                 case 'c':
-                    /* if (!ind) {
+                     if (!ind) {
                         System.out.println("\n No ha registrado información...");
                         break;
                     }
 
-                    int h[];
-
-                    int m;
-
-                    h = new int[1];
-
-                    m = totalMH(genero, h);
-
-                    System.out.println("\nTotal mujeres: " + m + "\thombres: " + h[0]); */
+                    contarLongitudes(palabra);
+                    
                     break;
 
-                case 'd':      // cali mas baja
+                    /*case 'd':      // cali mas baja
                     /* if (!ind) {
                         System.out.println("\n No ha registrado información...");
                         break;
                     }
 
                     System.out.println("\n La calif menor es: " + califbaja(calif));
-                     */
-                    break;
-
+                     
+                    break;  */
+                    
                 case 'e':
 
                     // SE RECOMIENDA A LOS ALUMNOS COMO EJERCICIOS
@@ -108,7 +126,7 @@ public class Proyecto_menu {
                     // * Agregar un punto a la calificación de las mujeres
                     // * Cambiarle el sexo a los reprobados
                     // * Obtener y exhibir el promedio del grupo
-                    // * Modificar un nombre, una calificación, etc.
+                    // * Modificar un palabra, una calificación, etc.
                     // * Realizar búsquedas, obtener la calificación mas baja, etc.
                     // * Total de aprobados, total de reprobados, etc.
                     // * etc., etc., etc.
