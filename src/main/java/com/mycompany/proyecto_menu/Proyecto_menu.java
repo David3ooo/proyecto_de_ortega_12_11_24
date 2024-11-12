@@ -17,7 +17,8 @@ public class Proyecto_menu {
                 char op;
 
                 System.out.println("\na.- Registro de información\nb.- Mostrar información\nc.- Contador de letras por cada oracion");
-                System.out.println("\nd.- Buscar dato en el arreglo\nx.- Salir");
+                System.out.println("d.- Buscar dato en el arreglo\ne.- Calcular cual es la palabra mas larga y cual es la mas corta del arreglo");
+                System.out.println("f.- Holas\nx.- Salir");
                 op = te.nextLine().charAt(0);
 
                 return op;
@@ -60,6 +61,57 @@ public class Proyecto_menu {
                     System.out.println("No se la letra o palabra:\t '" + fragmento + "'\t en el arreglo.");
                 }
             }
+        
+        static void mostrarMaxMinLongitud(String[] palabras) {
+                if (palabras == null || palabras.length == 0) {
+                    System.out.println("El arreglo está vacío, no hay datos para analizar.");
+                    return;
+                }
+
+                String palabraMax = palabras[0];
+                String palabraMin = palabras[0];
+
+                for (String palabra : palabras) {
+                    if (palabra != null) {
+                        if (palabra.length() > palabraMax.length()) {
+                            palabraMax = palabra;
+                        }
+                        if (palabra.length() < palabraMin.length()) {
+                            palabraMin = palabra;
+                        }
+                    }
+                }
+
+                System.out.println("\nLa palabra con mayor longitud es: '" + palabraMax + "' con " + palabraMax.length() + " caracteres.");
+                System.out.println("La palabra con menor longitud es: '" + palabraMin + "' con " + palabraMin.length() + " caracteres.");
+            }
+
+        static void mostrarInfoMayusculas(String[] palabras) {
+                int i = 1;
+                System.out.println("\nPalabras registradas en MAYUSCULAS:");
+                for (String palabra : palabras) {
+                    if (palabra != null && !palabra.isEmpty()) {
+                        System.out.println("Palabra u Oración no." + i + ":\t" + palabra.toUpperCase());
+                    } else {
+                        System.out.println("Palabra u Oración no." + i + ":\t[Vacía]");
+                    }
+                    i++;
+                }
+            }
+
+        static void mostrarInfoMinusculas(String[] palabras) {
+                int i = 1;
+                System.out.println("\nPalabras registradas en minúsculas:");
+                for (String palabra : palabras) {
+                    if (palabra != null && !palabra.isEmpty()) {
+                        System.out.println("Palabra u Oración no." + i + ":\t" + palabra.toLowerCase());
+                    } else {
+                        System.out.println("Palabra u Oración no." + i + ":\t[Vacía]");
+                    }
+                    i++;
+                }
+            }
+
 
     public static void main(String[] args) {
 
@@ -121,9 +173,41 @@ public class Proyecto_menu {
                         System.out.println("\n No ha registrado información...");
                         break;
                     }
+                    mostrarMaxMinLongitud(palabra);
+                    break;
+                    
+                    case 'f':
+                    if (!ind) {
+                        System.out.println("\n No ha registrado información...");
+                        break;
+                    }
+                    mostrarInfoMayusculas(palabra);
+                    break;
+                    
+                    case 'g':
+                    if (!ind) {
+                        System.out.println("\n No ha registrado información...");
+                        break;
+                    }
+                    mostrarInfoMinusculas(palabra);
+                    break;
+                    
+                    case 'h':
+                    if (!ind) {
+                        System.out.println("\n No ha registrado información...");
+                        break;
+                    }
                     //
                     break;
-
+                    
+                    case 'i':
+                    if (!ind) {
+                        System.out.println("\n No ha registrado información...");
+                        break;
+                    }
+                    //
+                    break;
+                    
                 default:
                     System.out.println("Opción no implementada...");
                     break;
